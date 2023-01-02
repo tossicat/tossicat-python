@@ -48,7 +48,7 @@ const TOSSI_LIST: [&str; 42] = [
     "한테",
 ];
 
-use crate::error::{ValueError};
+use crate::error::{InvalidValue};
 
 /// 변환하기 전에 입력된 것들이 변환가능한 것인지 검사하는 함수
 /// 위에서부터 아래 조건 문을 순서대로 살펴 보겠다.
@@ -63,11 +63,11 @@ use crate::error::{ValueError};
 /// `_verifiers()` 부분을 살펴보시면 됩니다.
 /// 
 
-pub fn verifier<'a>(word: &'a str, tossi: &'a str) -> Result<(),ValueError> {
+pub fn verifier<'a>(word: &'a str, tossi: &'a str) -> Result<(),InvalidValue> {
     if !is_verifier_tossi(tossi) {
-        Err(ValueError::InvalidTossi)
+        Err(InvalidValue::InvalidTossi)
     } else if over_limit_word_len(word) {
-        Err(ValueError::LimitLength)
+        Err(InvalidValue::LimitLength)
     } else {
         Ok(())
     }
@@ -127,10 +127,10 @@ fn over_limit_word_len(word: &str) -> bool {
 
      let word = "코코아";
      let tossi = "먹고싶다";
-     assert_eq!(Err(ValueError::InvalidTossi), verifier(word, tossi));
+     assert_eq!(Err(InvalidValue::InvalidTossi), verifier(word, tossi));
 
      let word = "코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아코코아";
      let tossi = "는";
-     assert_eq!(Err(ValueError::LimitLength), verifier(word, tossi));
+     assert_eq!(Err(InvalidValue::LimitLength), verifier(word, tossi));
 
  }

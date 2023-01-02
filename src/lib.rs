@@ -20,6 +20,7 @@ mod transfer;
 mod verifier;
 mod error;
 
+use error::ValueError;
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 use identifier::{Tossi, TossiKind};
@@ -117,8 +118,14 @@ pub fn pick(word: &str, tossi: &str) -> String {
 pub fn verifiers<'a>(word: &'a str, tossi: &'a str) -> PyResult<()> {
     match verifier::verifier(word, tossi) {
         Ok(()) => Ok(()),
-        Err(error::ValueError::InvalidTossi) => Err(PyValueError::new_err("This value is not correct tossi.")),
-        Err(error::ValueError::LimitLength) => Err(PyValueError::new_err("The length has been exceeded. Set the word length to less than 50."))
+        Err(error::InvalidValue::InvalidTossi) => {
+            let error_cmt = ValueError::new(error::InvalidValue::InvalidTossi);
+            Err(PyValueError::new_err(format!("{}", error_cmt)))
+        },
+        Err(error::InvalidValue::LimitLength) => {
+            let error_cmt = ValueError::new(error::InvalidValue::LimitLength);
+            Err(PyValueError::new_err(format!("{}", error_cmt)))
+        }
     }
 }
 
