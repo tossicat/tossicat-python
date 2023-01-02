@@ -18,7 +18,9 @@ mod identifier;
 mod number;
 mod transfer;
 mod verifier;
+mod error;
 
+use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 use identifier::{Tossi, TossiKind};
 
@@ -111,8 +113,13 @@ pub fn pick(word: &str, tossi: &str) -> String {
 /// 4. 단어의 길이가 50자를 넘으면 처리하지 않도록 처리한다.
 ///
 /// 이 4가지를 만족하면 본 작업인 글자에 맞게 토시를 변환하게 된다.
-pub fn verifiers<'a>(word: &'a str, tossi: &'a str) -> Result<(), &'a str> {
-    verifier::verifiers(word, tossi)
+#[pyfunction]
+pub fn verifiers<'a>(word: &'a str, tossi: &'a str) -> PyResult<()> {
+    match verifier::verifier(word, tossi) {
+        Ok(()) => Ok(()),
+        Err(error::ValueError::InvalidTossi) => Err(PyValueError::new_err("This value is not correct tossi.")),
+        Err(error::ValueError::LimitLength) => Err(PyValueError::new_err("The length has been exceeded. Set the word length to less than 50."))
+    }
 }
 
 
@@ -120,5 +127,6 @@ pub fn verifiers<'a>(word: &'a str, tossi: &'a str) -> Result<(), &'a str> {
 fn tossicat(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(pick, m)?)?;
     m.add_function(wrap_pyfunction!(postfix, m)?)?;
+    m.add_function(wrap_pyfunction!(verifiers, m)?)?;
     Ok(())
 }
