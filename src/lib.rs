@@ -119,12 +119,10 @@ pub fn verifiers<'a>(word: &'a str, tossi: &'a str) -> PyResult<()> {
     match verifier::verifier(word, tossi) {
         Ok(()) => Ok(()),
         Err(error::InvalidValue::InvalidTossi) => {
-            let error_cmt = ValueError::new(error::InvalidValue::InvalidTossi);
-            Err(PyValueError::new_err(format!("{}", error_cmt)))
+            Err(PyValueError::new_err(format!("{}", ValueError::new(error::InvalidValue::InvalidTossi))))
         },
         Err(error::InvalidValue::LimitLength) => {
-            let error_cmt = ValueError::new(error::InvalidValue::LimitLength);
-            Err(PyValueError::new_err(format!("{}", error_cmt)))
+            Err(PyValueError::new_err(format!("{}", ValueError::new(error::InvalidValue::LimitLength))))
         }
     }
 }
