@@ -2,3 +2,7 @@
 
 # tossicat-python
 PyO3를 사용하여 [tossicat-core](https://github.com/tossicat/tossicat-core)를 Python에서 사용할 수 있도록 바인딩 합니다.
+
+
+
+https://user-images.githubusercontent.com/42489770/212535937-ca494bde-18cb-4229-94a0-af10370b992c.mov
