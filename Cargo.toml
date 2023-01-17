@@ -10,4 +10,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.17.3", features = ["extension-module"] }
-tossicat = "0.4.5"
+tossicat = "0.4.6"
