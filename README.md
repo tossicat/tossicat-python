@@ -24,7 +24,7 @@ pip install tossicat-python
 예시 코드는 아래와 같습니다.
 
 ```python
-import tosscat as tc
+import tossicat as tc
 
 word = "테스트"
 tossi = "은"
@@ -41,7 +41,7 @@ print(result)
 예시 코드는 아래와 같습니다.
 
 ```python
-import tosscat as tc
+import tossicat as tc
 
 sentence = "{한국어, 은} 정말 좋은 언어입니다. {커피, 을} 정말 좋아해요"
 
@@ -59,12 +59,12 @@ https://www.youtube.com/watch?v=H9Fj___zmkg
 예시 코드는 아래와 같습니다.
 
 ```python
-import tosscat as tc
+import tossicat as tc
 
 word = "테스트"
 tossi = "은"
 
-result = tc.postfix(word, tossi)
+result = tc.transform(word, tossi)
 
 print(result)
 ("테스트", "는")
