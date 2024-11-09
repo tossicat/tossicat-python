@@ -52,3 +52,20 @@ print(result)
 ```
 
 https://www.youtube.com/watch?v=H9Fj___zmkg
+
+## transform(word, tossi)  
+
+이 함수는 단어와 토씨(조사)를 파라미터로 받으며 앞 단어에 맞는 토씨로 변환하여 각각 반환합니다.  
+예시 코드는 아래와 같습니다.
+
+```python
+import tosscat as tc
+
+word = "테스트"
+tossi = "은"
+
+result = tc.postfix(word, tossi)
+
+print(result)
+("테스트", "는")
+```
