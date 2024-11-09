@@ -13,7 +13,7 @@ tossicat-python은 현재 PyPi에 올라가 있는 파이썬 라이브러리입�
 먼저 pip를 사용하여 라이브러리를 설치합니다.
 
 ```bash
-pip install tosscat-python
+pip install tossicat-python
 ```
 
 해당 패키지에서는 크게 2가지의 함수를 지원합니다.
