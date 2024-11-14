@@ -26,7 +26,7 @@ jobs:
     - uses: PyO3/maturin-action@v1
       with:
         command: build
-        args: --release -o dist -i 3.7 3.8 3.9 3.10 3.11 3.12 3.13 pypy3.10
+        args: --release -o dist -i 3.7 3.8 3.9 3.10 3.11 3.12 pypy3.10
     - name: Upload wheels
       uses: actions/upload-artifact@v3
       with:
