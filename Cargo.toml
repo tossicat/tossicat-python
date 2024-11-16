@@ -9,5 +9,5 @@ name = "tossicat"
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "0.17.3", features = ["extension-module"] }
+pyo3 = { version = "0.22.6", features = ["extension-module"] }
 tossicat = "0.6.1"
