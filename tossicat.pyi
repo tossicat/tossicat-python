@@ -1,0 +1,9 @@
+# tossicat.pyi
+
+from typing import Tuple
+
+def transform(word: str, tossi: str) -> Tuple[str, str]: ...
+
+def postfix(word: str, tossi: str) -> str: ...
+
+def modify_sentence(sentence: str) -> str: ...

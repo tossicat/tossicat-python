@@ -1,9 +1,9 @@
 [package]
 name = "tossicat-python"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
 [lib]
 name = "tossicat"
 crate-type = ["cdylib"]
@@ -11,3 +11,6 @@ crate-type = ["cdylib"]
 [dependencies]
 pyo3 = { version = "0.22.6", features = ["extension-module"] }
 tossicat = "0.6.1"
+
+[package.metadata.maturin]
+include = ["tossicat.pyi"]
